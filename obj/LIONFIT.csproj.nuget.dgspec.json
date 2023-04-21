@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\giano\\OneDrive\\Escritorio\\LIONFIT\\LIONFIT\\LIONFIT.csproj": {}
+    "c:\\Users\\giano\\OneDrive\\Escritorio\\LIONFIT\\LIONFIT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\giano\\OneDrive\\Escritorio\\LIONFIT\\LIONFIT\\LIONFIT.csproj": {
+    "c:\\Users\\giano\\OneDrive\\Escritorio\\LIONFIT\\LIONFIT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\giano\\OneDrive\\Escritorio\\LIONFIT\\LIONFIT\\LIONFIT.csproj",
+        "projectUniqueName": "c:\\Users\\giano\\OneDrive\\Escritorio\\LIONFIT\\LIONFIT.csproj",
         "projectName": "LIONFIT",
-        "projectPath": "C:\\Users\\giano\\OneDrive\\Escritorio\\LIONFIT\\LIONFIT\\LIONFIT.csproj",
+        "projectPath": "c:\\Users\\giano\\OneDrive\\Escritorio\\LIONFIT\\LIONFIT.csproj",
         "packagesPath": "C:\\Users\\giano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\giano\\OneDrive\\Escritorio\\LIONFIT\\LIONFIT\\obj\\",
+        "outputPath": "c:\\Users\\giano\\OneDrive\\Escritorio\\LIONFIT\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\giano\\AppData\\Roaming\\NuGet\\NuGet.Config"
