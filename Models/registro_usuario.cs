@@ -7,12 +7,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LIONFIT.Models
 {
 
-    [table("t_registro_usuario")]
-    public class t_registro_usuario
+    [Table("registro_usuario")]
+    public class registro_usuario
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("id")]
-        public int id {get;set;}
+        public int Id {get;set;}
 
 
         [Column ("nombre")]
@@ -27,6 +27,6 @@ namespace LIONFIT.Models
 
         
         [Column ("Fecha_nacimiento")]
-        public date? Fecha_nacimiento {get;set;}
+        public String? Fecha_nacimiento {get;set;}
     }
 }
