@@ -18,15 +18,19 @@ namespace LIONFIT.Models
         [Column ("nombre")]
         public String? Nombre {get;set;}
 
-        [Column ("apellido")]
-        public String? Apellido {get;set;}
-
+        [Column ("apellido_paterno")]
+        public String? ApellidoPat {get;set;}
+        
+        [Column ("apellido_materno")]
+        public String? ApellidoMat {get;set;}
         
         [Column ("correo")]
         public String? CorreoElectronico {get;set;}
 
-        
-        [Column ("Fecha_nacimiento")]
-        public String? Fecha_nacimiento {get;set;}
+        [Column ("password")]
+        public String? password {get;set;}
+
+        [Column ("celular")]
+        public String? celular {get;set;}
     }
 }
