@@ -8,6 +8,29 @@ a.navbar-brand[b-14inmvcuun] {
   word-break: break-all;
 }
 
+.navbar-nav .nav-link[b-14inmvcuun] {
+  color: black; /* color por defecto */
+}
+
+.navbar-nav .nav-link:hover[b-14inmvcuun] {
+  color: red; /* color al pasar el cursor */
+}
+
+.navbar-nav .nav-link.active[b-14inmvcuun] {
+  color: red; /* color cuando el enlace está activo */
+}
+
+.navbar-nav .nav-link.text-danger[b-14inmvcuun] {
+  color: red; /* color de texto en rojo */
+}
+
+.navbar-nav .nav-link.text-center[b-14inmvcuun] {
+
+  text-align: center; /* alinear el texto al centro */
+}
+
+
+
 a[b-14inmvcuun] {
   color: #0077cc;
 }

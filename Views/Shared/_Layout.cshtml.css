@@ -7,6 +7,29 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.navbar-nav .nav-link {
+  color: black; /* color por defecto */
+}
+
+.navbar-nav .nav-link:hover {
+  color: red; /* color al pasar el cursor */
+}
+
+.navbar-nav .nav-link.active {
+  color: red; /* color cuando el enlace está activo */
+}
+
+.navbar-nav .nav-link.text-danger {
+  color: red; /* color de texto en rojo */
+}
+
+.navbar-nav .nav-link.text-center {
+
+  text-align: center; /* alinear el texto al centro */
+}
+
+
+
 a {
   color: #0077cc;
 }
