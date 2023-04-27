@@ -11,8 +11,8 @@ public class ApplicationDbContext : IdentityDbContext
     {
     }
 
-    public DbSet<producto> Dataproducto {get;set;}
-    public DbSet<categoria> Datacategoria {get;set;}
-    public DbSet<boleta> Databoleta {get;set;}
-    public DbSet<registro_usuario> Dataregistro_usuario {get;set;}
+    public DbSet<Producto> Dataproducto {get;set;}
+    public DbSet<Categoria> Datacategoria {get;set;}
+    public DbSet<Boleta> Databoleta {get;set;}
+    public DbSet<Registro_usuario> Dataregistro_usuario {get;set;}
 }

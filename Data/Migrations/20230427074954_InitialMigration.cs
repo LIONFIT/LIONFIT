@@ -52,15 +52,61 @@ namespace LIONFIT.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "boleta",
+                columns: table => new
+                {
+                    id_boleta = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    fecha = table.Column<string>(type: "text", nullable: true),
+                    precio_total = table.Column<double>(type: "double precision", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_boleta", x => x.id_boleta);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "categoria",
+                columns: table => new
+                {
+                    id_categoria = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    nombre_categoria = table.Column<string>(type: "text", nullable: true),
+                    descripcion = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_categoria", x => x.id_categoria);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "producto",
+                columns: table => new
+                {
+                    id_producto = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    nombre_producto = table.Column<string>(type: "text", nullable: true),
+                    precio_producto = table.Column<double>(type: "double precision", nullable: true),
+                    descripcion = table.Column<string>(type: "text", nullable: true),
+                    imagen = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_producto", x => x.id_producto);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "registro_usuario",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     nombre = table.Column<string>(type: "text", nullable: true),
-                    apellido = table.Column<string>(type: "text", nullable: true),
+                    apellido_paterno = table.Column<string>(type: "text", nullable: true),
+                    apellido_materno = table.Column<string>(type: "text", nullable: true),
                     correo = table.Column<string>(type: "text", nullable: true),
-                    Fecha_nacimiento = table.Column<string>(type: "text", nullable: true)
+                    password = table.Column<string>(type: "text", nullable: true),
+                    celular = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -228,6 +274,15 @@ namespace LIONFIT.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "boleta");
+
+            migrationBuilder.DropTable(
+                name: "categoria");
+
+            migrationBuilder.DropTable(
+                name: "producto");
 
             migrationBuilder.DropTable(
                 name: "registro_usuario");

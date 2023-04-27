@@ -8,7 +8,7 @@ namespace LIONFIT.Models
 {
 
     [Table("categoria")]
-    public class categoria
+    public class Categoria
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("id_categoria")]

@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LIONFIT.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230426230306_InitialMigration")]
+    [Migration("20230427074954_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -25,7 +25,81 @@ namespace LIONFIT.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("LIONFIT.Models.registro_usuario", b =>
+            modelBuilder.Entity("LIONFIT.Models.Boleta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id_boleta");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Fecha")
+                        .HasColumnType("text")
+                        .HasColumnName("fecha");
+
+                    b.Property<double?>("total")
+                        .HasColumnType("double precision")
+                        .HasColumnName("precio_total");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("boleta");
+                });
+
+            modelBuilder.Entity("LIONFIT.Models.Categoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id_categoria");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DesCategoria")
+                        .HasColumnType("text")
+                        .HasColumnName("descripcion");
+
+                    b.Property<string>("NomCategoria")
+                        .HasColumnType("text")
+                        .HasColumnName("nombre_categoria");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("categoria");
+                });
+
+            modelBuilder.Entity("LIONFIT.Models.Producto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id_producto");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DesProducto")
+                        .HasColumnType("text")
+                        .HasColumnName("descripcion");
+
+                    b.Property<string>("Imagen")
+                        .HasColumnType("text")
+                        .HasColumnName("imagen");
+
+                    b.Property<string>("NomProducto")
+                        .HasColumnType("text")
+                        .HasColumnName("nombre_producto");
+
+                    b.Property<double?>("Precio")
+                        .HasColumnType("double precision")
+                        .HasColumnName("precio_producto");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("producto");
+                });
+
+            modelBuilder.Entity("LIONFIT.Models.Registro_usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,21 +108,29 @@ namespace LIONFIT.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Apellido")
+                    b.Property<string>("ApellidoMat")
                         .HasColumnType("text")
-                        .HasColumnName("apellido");
+                        .HasColumnName("apellido_materno");
+
+                    b.Property<string>("ApellidoPat")
+                        .HasColumnType("text")
+                        .HasColumnName("apellido_paterno");
 
                     b.Property<string>("CorreoElectronico")
                         .HasColumnType("text")
                         .HasColumnName("correo");
 
-                    b.Property<string>("Fecha_nacimiento")
-                        .HasColumnType("text")
-                        .HasColumnName("Fecha_nacimiento");
-
                     b.Property<string>("Nombre")
                         .HasColumnType("text")
                         .HasColumnName("nombre");
+
+                    b.Property<string>("celular")
+                        .HasColumnType("text")
+                        .HasColumnName("celular");
+
+                    b.Property<string>("password")
+                        .HasColumnType("text")
+                        .HasColumnName("password");
 
                     b.HasKey("Id");
 

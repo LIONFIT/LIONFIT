@@ -8,7 +8,7 @@ namespace LIONFIT.Models
 {
 
     [Table("registro_usuario")]
-    public class registro_usuario
+    public class Registro_usuario
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("id")]
