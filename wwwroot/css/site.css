@@ -19,4 +19,12 @@ html {
 
 body {
   margin-bottom: 60px;
+  
+}
+.carousel-container {
+  max-height: 400px; /* ajusta la altura como desees */
+}
+.carousel-item img {
+  max-height: 600px;
+  width: 800px;
 }
