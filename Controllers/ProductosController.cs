@@ -25,9 +25,15 @@ namespace LIONFIT.Controllers
         }
 
         
-        public IActionResult Index()
+        public IActionResult Index( string? searchString)
         {
-           var productos= from o in _dbcontext.Dataproducto select o;
+           var productos = from o in _dbcontext.Dataproducto select o;
+            //SELECT * FROM t_productos -> &
+            if(!String.IsNullOrEmpty(searchString)){
+                searchString=searchString.ToLower();
+                productos = productos.Where(s => s.NomProducto.ToLower().Contains(searchString)); //Algebra
+            }
+            
             return View(productos.ToList());
         }
 

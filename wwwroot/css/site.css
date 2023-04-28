@@ -28,3 +28,12 @@ body {
   max-height: 600px;
   width: 800px;
 }
+hr {
+  height: 1px;
+  border: none;
+  background-color: black;
+  border-right: 2px solid black;
+  box-shadow: 10px 0px 10px rgba(0, 0, 0, 10);
+  margin: 50px 0;
+}
+
