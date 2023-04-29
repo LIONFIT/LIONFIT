@@ -36,14 +36,14 @@ a {
 
 .btn-primary {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #E14545;
+  border-color: #E14545;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #E14545;
+  border-color: #E14545;
 }
 
 .border-top {
@@ -63,6 +63,8 @@ button.accept-policy {
 }
 
 .footer {
+  background-color: #292929;
+  height: 70px;
   position: absolute;
   bottom: 0;
   width: 100%;

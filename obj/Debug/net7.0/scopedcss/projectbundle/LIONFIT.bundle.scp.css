@@ -37,14 +37,14 @@ a[b-14inmvcuun] {
 
 .btn-primary[b-14inmvcuun] {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #E14545;
+  border-color: #E14545;
 }
 
 .nav-pills .nav-link.active[b-14inmvcuun], .nav-pills .show > .nav-link[b-14inmvcuun] {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #E14545;
+  border-color: #E14545;
 }
 
 .border-top[b-14inmvcuun] {
@@ -64,6 +64,8 @@ button.accept-policy[b-14inmvcuun] {
 }
 
 .footer[b-14inmvcuun] {
+  background-color: #292929;
+  height: 70px;
   position: absolute;
   bottom: 0;
   width: 100%;

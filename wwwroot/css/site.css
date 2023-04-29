@@ -86,7 +86,7 @@ hr {
   transform: scale(1);
 }
 .social-btns {
-  height: 80px;
+  height: 50px;
   margin: auto;
   font-size: 0;
   text-align: center;
@@ -96,8 +96,8 @@ hr {
 .social-btns .btn {
   display: inline-block;
   background-color: #fff;
-  width: 80px;  height: 80px;
-  line-height: 80px;
+  width: 58px;  height: 58px;
+  line-height: 50px;
   margin: 0 10px;
   text-align: center;
   position: relative;
@@ -113,7 +113,7 @@ hr {
   transform: rotate(45deg);
 }
 .social-btns .btn .fa {
-  font-size: 38px;
+  font-size: 40px;
   vertical-align: middle;
 }
 
