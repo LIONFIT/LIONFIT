@@ -2,11 +2,11 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav">
-
+<ul class="navbar-nav ms-auto d-flex align-items-center">
     <li class="nav-item">
-        <form asp-controller="Productos" asp-action="Index">
-            <input type="text" name="searchString"><input type="submit" value="Buscar" />
+        <form asp-controller="Productos" asp-action="Index" class="d-flex align-items-center">
+            <input type="text" name="searchString" class="form-control me-2" placeholder="Buscar">
+            <button type="submit" class="btn btn-outline-light">Buscar</button>
         </form>
     </li>
 
