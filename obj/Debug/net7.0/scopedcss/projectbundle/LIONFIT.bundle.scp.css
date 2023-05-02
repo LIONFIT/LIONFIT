@@ -29,11 +29,6 @@ a.navbar-brand[b-14inmvcuun] {
 }
 
 
-
-a[b-14inmvcuun] {
-  color: #0077cc;
-}
-
 .btn-primary[b-14inmvcuun] {
   color: #fff;
   background-color: #E14545;
@@ -62,12 +57,4 @@ button.accept-policy[b-14inmvcuun] {
   line-height: inherit;
 }
 
-.footer[b-14inmvcuun] {
-  background-color: #292929;
-  height: 70px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
-}
+
