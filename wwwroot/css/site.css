@@ -8,12 +8,6 @@ html {
 
 }
 
-.navbar {
-  font-size: 17px;
-  border-radius: 0 0 20px 20px;
-
-}
-
 .nav-item form input:first-child {
   border: 2px solid #161616;
   border-radius: 10px;
@@ -47,7 +41,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family:'Lucida Calligraphy', cursive; 
 }
 .inicio::before{
   content: "";
@@ -94,7 +88,8 @@ html {
 }
 
 body {
-  background-color: #ffffff;
+  background-image: url("https://drive.google.com/uc?id=10FMJZj4D98YDicIQbsyA20K5Y5N0IafY");
+  background-size: 800px;
   
 
 }
@@ -113,6 +108,14 @@ body {
 
 .card {
   border-color: #fff;
+}
+
+.contenedor_mensaje{
+  position: center;
+  height: 890px;
+  margin-left:0cm ;
+  background: rgba(217, 217, 217, 0.8);
+  border-radius: 15px;
 }
 
 hr {
