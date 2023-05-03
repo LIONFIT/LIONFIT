@@ -215,6 +215,7 @@ hr {
   background-color: rgba(255, 255, 255, 0.788);
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  
 
 }
 
@@ -412,5 +413,44 @@ h1 {
 }
 
 
+
+/*------------------------------------*/
+.bt {
+ background:rgba(0, 0, 0, 0.0);
+  border-color: rgba(0, 0, 0, 0.0);
+}
+
+.btn-cart ion-icon {
+  color:white !important;
+  background-color: none;
+  size: 20px;
+}
+
+.btn-cart ion-icon:hover{
+  background-color: white;
+}
+
+/*----------------cerrar sesion--------------------*/
+.close-ses{
+  color:black;
+  size: 15px;
+  width: 100%;
+  height: inherit;
+  padding:10px;
+  background-color: rgba(0, 0, 0, 0.0);
+  border-color: rgba(0, 0, 0, 0.0);
+  transition: 0.5s;
+}
+.close-ses:hover{
+  color: #f54d36;
+  size: 15px;
+  width: 100%;
+  height: inherit;
+  
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+ 
+ 
+}
 
 /*------------------------------------*/
