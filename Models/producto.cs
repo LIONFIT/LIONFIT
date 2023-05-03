@@ -19,7 +19,7 @@ namespace LIONFIT.Models
         public String? NomProducto {get;set;}
 
         [Column ("precio_producto")]
-        public Double? Precio {get;set;}
+        public Decimal Precio {get;set;}
 
         
         [Column ("descripcion")]

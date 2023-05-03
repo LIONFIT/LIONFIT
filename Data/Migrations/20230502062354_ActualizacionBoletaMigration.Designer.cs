@@ -3,6 +3,7 @@ using System;
 using LIONFIT.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LIONFIT.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230502062354_ActualizacionBoletaMigration")]
+    partial class ActualizacionBoletaMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,13 +96,51 @@ namespace LIONFIT.Data.Migrations
                         .HasColumnType("text")
                         .HasColumnName("nombre_producto");
 
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("numeric")
+                    b.Property<double?>("Precio")
+                        .HasColumnType("double precision")
                         .HasColumnName("precio_producto");
 
                     b.HasKey("Id");
 
                     b.ToTable("producto");
+                });
+
+            modelBuilder.Entity("LIONFIT.Models.Registro_usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApellidoMat")
+                        .HasColumnType("text")
+                        .HasColumnName("apellido_materno");
+
+                    b.Property<string>("ApellidoPat")
+                        .HasColumnType("text")
+                        .HasColumnName("apellido_paterno");
+
+                    b.Property<string>("CorreoElectronico")
+                        .HasColumnType("text")
+                        .HasColumnName("correo");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("text")
+                        .HasColumnName("nombre");
+
+                    b.Property<string>("celular")
+                        .HasColumnType("text")
+                        .HasColumnName("celular");
+
+                    b.Property<string>("password")
+                        .HasColumnType("text")
+                        .HasColumnName("password");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("registro_usuario");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -15,12 +15,12 @@ namespace LIONFIT.Models
         public int Id {get;set;}
 
 
-        [Column ("fecha")]
-        public String? Fecha {get;set;}
+        public string? UserID { get; set; }
 
-        
-        [Column ("precio_total")]
-        public Double? total {get;set;}
+        public Producto? Producto { get; set; }
 
+        public int Cantidad { get; set; }
+
+        public Decimal Precio { get; set; }
     }
 }
