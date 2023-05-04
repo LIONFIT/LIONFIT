@@ -3,11 +3,11 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<div class="cabina">
 
-<h1>Editar</h1>
-
-<h4>EDITAR PRODUCTO</h4>
-<hr />
+<div class="titu">
+<h1>EDITAR PRODUCTO</h1>
+</div>
 <div class="row">
     <div class="col-md-4">
         <form asp-controller="Carrito" asp-action="Edit">
@@ -20,17 +20,20 @@
                 <input asp-for="Cantidad" class="form-control" />
                 <span asp-validation-for="Cantidad" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
+<br>
 <div>
-    <a asp-action="Index">Regresar</a>
+    <a class="indis"asp-action="Index">Regresar</a>
 </div>
-
+</div>
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
