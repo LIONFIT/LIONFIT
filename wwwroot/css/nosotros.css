@@ -1,0 +1,44 @@
+
+
+  .wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background:rgba(255, 255, 255, 0.774);
+   
+    
+  }
+  
+  /* Estilos del header */
+  
+  
+  .title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ff704d;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  /* Estilos del main */
+  
+  .section {
+    margin-bottom: 40px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff704d;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #525151;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos del footer */
+  
