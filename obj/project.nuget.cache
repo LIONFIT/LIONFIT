@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F1ahFhDPnUV+LSpgNq601mg2cClFjuTzwv7aEQsTBUaH/p+9X2fS693QRS89922gTb8dFvuXrUB8HcNMUNW+MQ==",
+  "dgSpecHash": "xiU/14NcgNEnWGsZTw1ML4D5t4wExpK59L62ZGYINyeysGk5mNefjqmE44KC8cs1f6ErjH/W1lYfaIUo8qw04A==",
   "success": true,
-  "projectFilePath": "c:\\Users\\51970\\Desktop\\LIONFIT\\LIONFIT.csproj",
+  "projectFilePath": "C:\\Users\\51970\\Desktop\\LIONFIT\\LIONFIT.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\51970\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\51970\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
