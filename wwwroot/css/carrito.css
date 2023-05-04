@@ -1,30 +1,45 @@
 
-.titulo-Car{
-    color: aliceblue;
-    }
+
     
+    .titulo-carrito{
+      background: rgba(254, 254, 254, 0.949);
+      border-radius: 10px;
+      text-align: center;
+      height: auto;
+    }
+    .titulo-carrito h1{
+      color: black;
+    }
     .carrito_compras{
-        padding: 50px;
+        padding: 60px;
         
     }
     
     .table {
-        background-color: rgb(255, 243, 243);
+        background-color: rgba(255, 244, 244, 0.9);
         border-radius: 10px;
-        margin:10px;
+       
         border-color: black;
       }
       
       .table tr:nth-child(even) {
-        background-color: rgb(253, 135, 0);
+        background-color: rgba(0, 0, 0, 0.759);
         color:aliceblue;
+        
+        border-radius: 10px;
       }
       
       .table th,
       .table td {
         padding: 8px;
       }
-      
+      .item2{
+        background: rgba(2, 0, 0, 0.736);
+        border-radius: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
     
     
       .minimal-button {
