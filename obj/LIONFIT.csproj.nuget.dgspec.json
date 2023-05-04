@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\51970\\Desktop\\LIONFIT\\LIONFIT.csproj": {}
+    "C:\\Users\\lopez\\LIONFIT\\LIONFIT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\51970\\Desktop\\LIONFIT\\LIONFIT.csproj": {
+    "C:\\Users\\lopez\\LIONFIT\\LIONFIT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\51970\\Desktop\\LIONFIT\\LIONFIT.csproj",
+        "projectUniqueName": "C:\\Users\\lopez\\LIONFIT\\LIONFIT.csproj",
         "projectName": "LIONFIT",
-        "projectPath": "C:\\Users\\51970\\Desktop\\LIONFIT\\LIONFIT.csproj",
-        "packagesPath": "C:\\Users\\51970\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\51970\\Desktop\\LIONFIT\\obj\\",
+        "projectPath": "C:\\Users\\lopez\\LIONFIT\\LIONFIT.csproj",
+        "packagesPath": "C:\\Users\\lopez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lopez\\LIONFIT\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\51970\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\lopez\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -90,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

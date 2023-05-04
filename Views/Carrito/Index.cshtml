@@ -4,50 +4,68 @@
 @{
     ViewData["Title"] = "Carrito";
     IEnumerable<LIONFIT.Models.Boleta> listItemsCarrito = new List<Boleta>();
-        if(Model != null && Model.elementosCarrito != null)
-{
-    listItemsCarrito = Model.elementosCarrito;
-}
+    if (Model != null && Model.elementosCarrito != null)
+    {
+        listItemsCarrito = Model.elementosCarrito;
+    }
     Decimal montoTotal = @Model.montoTotal;
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="titulo">@ViewData["Title"]</h1>
+<div class="carrito_compras">
+    <div class="button-container">
+        <div class="item1">
 
-<a class="btn btn-primary" asp-controller="Pago" 
-        asp-action="Create" asp-route-monto="@montoTotal">Pagar</a><p>Total S/. @montoTotal</p>
+            <a class="minimal-button" asp-controller="Pago" asp-action="Create" asp-route-monto="@montoTotal">
+                <span>Pagar</span>
+                <span class="button-icon"></span>
+            </a>
+        </div>
+        <div class="item2">
+            <p class="producto">Total S/. @montoTotal</p>
+        </div>
+    </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => listItemsCarrito.FirstOrDefault().Producto.NomProducto)
-            </th> 
-            <th>
-                @Html.DisplayNameFor(model => listItemsCarrito.FirstOrDefault().Cantidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => listItemsCarrito.FirstOrDefault().Precio)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (Boleta item in Model.elementosCarrito) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Producto.NomProducto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Precio)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => listItemsCarrito.FirstOrDefault().Producto.NomProducto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => listItemsCarrito.FirstOrDefault().Cantidad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => listItemsCarrito.FirstOrDefault().Precio)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Boleta item in Model.elementosCarrito)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Producto.NomProducto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cantidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Precio)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="edit-link">
+                            <ion-icon size="small" name="create-outline"></ion-icon>
+                        </a>
+
+                        <a asp-action="Delete" asp-route-id="@item.Id">
+                            <ion-icon size="small" name="trash-outline">
+
+                            </ion-icon> </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
