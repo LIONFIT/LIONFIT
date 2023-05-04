@@ -9,8 +9,8 @@ html {
 }
 
 .nav-item form input:first-child {
-  border: 2px solid #161616;
-  border-radius: 10px;
+  border: 2px solid #a6a6a6;
+  border-radius: 18px;
   padding: 5px;
   font-size: 16px;
   width: 200px;
@@ -107,15 +107,47 @@ body {
 
 
 .card {
-  border-color: #fff;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
+.barra{
+  top: auto;
+  left: 0;
+  position: absolute;
+  background:#0d0d0d;
+  width: 100%;
+  height: auto;
+  padding-top:50px;
+  padding-bottom:2px;
+  
+}
+.barra h1{
+  color: #ffffff;
+  font-family: Bahnschrift SemiCondensed ;
+  font-size: 35px;
+  font-weight: 350;
+}
+
+
 .contenedor_mensaje{
+  margin-top: 150px;
   position: center;
-  height: 890px;
-  margin-left:0cm ;
+  height: auto;
   background: rgba(217, 217, 217, 0.8);
   border-radius: 15px;
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+
+}
+
+@media (max-width: 767px) {
+  /* Ajustar los estilos para pantallas con un ancho máximo de 767px */
+  .contenedor_mensaje {
+    margin-top: 250px; /* Aumentar el margen superior para evitar que se superponga con el div "barra" */
+  }
 }
 
 hr {
@@ -136,7 +168,18 @@ hr {
   text-align: justify;
   text-justify: inter-word;
 }
+/* Estilos para Producto */
 
+.titulo-producto{
+  background: rgba(254, 254, 254, 0.949);
+  border-radius: 10px;
+  text-align: center;
+  height: auto;
+}
+
+#products .card {
+  border-radius: 15px;
+}
 
 /* Estilos para la pantalla de carga */
 
