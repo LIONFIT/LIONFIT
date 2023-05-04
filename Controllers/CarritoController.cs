@@ -12,12 +12,12 @@ using LIONFIT.Data;
 using LIONFIT.Models;
 namespace LIONFIT.Controllers
 {
-    
+
     public class CarritoController : Controller
     {
         private readonly ILogger<CarritoController> _logger;
         private readonly ApplicationDbContext _dbcontext;
-         private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
         public CarritoController(ILogger<CarritoController> logger, ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
@@ -51,6 +51,71 @@ namespace LIONFIT.Controllers
 
             //return View(carrito);
             return View(model);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            // Busca el producto por su Id
+            var product = _dbcontext.Databoleta.FirstOrDefault(p => p.Id == id);
+
+            if (product == null)
+            {
+                return NotFound(); // Si el producto no existe, retorna un error 404
+            }
+
+            _dbcontext.Databoleta.Remove(product); // Elimina el producto del contexto de datos
+            _dbcontext.SaveChanges(); // Guarda los cambios en la base de datos
+
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var Boleta = await _dbcontext.Databoleta.FindAsync(id);
+            if (Boleta == null)
+            {
+                return NotFound();
+            }
+            return View(Boleta);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Cantidad,Precio,UserID")] Boleta boleta)
+        {
+            if (id != boleta.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _dbcontext.Update(boleta);
+                    await _dbcontext.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_dbcontext.Databoleta.Any(e => e.Id == id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(boleta);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
