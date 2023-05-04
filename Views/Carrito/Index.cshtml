@@ -15,18 +15,7 @@
     <h1>@ViewData["Title"]</h1>
 </div>
 <div class="carrito_compras">
-    <div class="button-container">
-        <div class="item1">
-
-            <a class="minimal-button" asp-controller="Pago" asp-action="Create" asp-route-monto="@montoTotal">
-                <span>Pagar</span>
-                <span class="button-icon"></span>
-            </a>
-        </div>
-        <div class="item2">
-            <p class="producto">Total S/. @montoTotal</p>
-        </div>
-    </div>
+    
 
     <table class="table">
         <thead>
@@ -70,5 +59,17 @@
             }
         </tbody>
     </table>
+   <div class="button-container">
+        <div class="item1">
+
+            <a class="minimal-button" asp-controller="Pago" asp-action="Create" asp-route-monto="@montoTotal">
+                <span>Pagar</span>
+                <span class="button-icon"></span>
+            </a>
+        </div>
+        <div class="item2">
+            <p class="producto">Total S/. @montoTotal</p>
+        </div>
+    </div>
 </div>
 </div>
