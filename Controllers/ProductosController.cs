@@ -37,7 +37,7 @@ namespace LIONFIT.Controllers
             //SELECT * FROM t_productos -> &
             if(!String.IsNullOrEmpty(searchString)){
                 searchString=searchString.ToLower();
-                productos = productos.Where(s => s.NomProducto.ToLower().Contains(searchString)); //Algebra
+                productos = productos.Where(s => s.NomProducto.ToLower().Contains(searchString) && s.Status.Equals("activo") ) ; 
             }
             
             return View(await productos.ToListAsync());

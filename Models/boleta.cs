@@ -22,5 +22,7 @@ namespace LIONFIT.Models
         public int Cantidad { get; set; }
 
         public Decimal Precio { get; set; }
+
+         public String Status { get; set; } ="PENDIENTE";
     }
 }
