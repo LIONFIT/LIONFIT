@@ -8,44 +8,72 @@
     @if (SignInManager.IsSignedIn(User))
     {
 
-    
-        <li class="nav-item">
-            <form asp-controller="Productos" asp-action="Index" class="d-flex align-items-center">
-                <input type="text" name="searchString" class="form-control me-2" placeholder="Buscar">
-                <button type="submit" class="btn btn-outline-light">Buscar</button>
-            </form>
-        </li>
+        IdentityUser myidentity  = await Task.Run(() => UserManager.GetUserAsync(User));
+        var roles = await Task.Run(() => UserManager.GetRolesAsync(myidentity));
 
+        @if(roles.Contains("admin") ){  
 
-         <li class="nav-item">
-            <form asp-controller="Carrito" asp-action="Index">
-                <button type="submit" class="bt" >
-                    <ion-icon name="cart-outline"></ion-icon>
-                </button>
-            </form>
-        </li>
+            <li class="nav-item">
+                <form asp-controller="Productos" asp-action="Index" class="d-flex align-items-center">
+                    <input type="text" name="searchString" class="form-control me-2" placeholder="Buscar">
+                    <button type="submit" class="btn btn-outline-light">Buscar</button>
+                </form>
+            </li>
 
-        <div class="dropdown-btn">
-            <ion-icon name="person-circle-outline" alt="Botón desplegable"></ion-icon>
-            <div class="dropdown-menu">
+            <div class="dropdown-btn">
+                <ion-icon name="person-circle-outline" alt="Botón desplegable"></ion-icon>
+                <div class="dropdown-menu">
 
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                        @User.Identity?.Name!</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            @User.Identity?.Name!</a>
+                    </li>
 
-                <li class="nav-item">
-                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
-                    asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                        <button type="submit" class="close-ses">Cerrar Sesion</button>
-                    </form>
-                </li>
+                    <li class="nav-item">
+                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+                        asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button type="submit" class="close-ses">Cerrar Sesion</button>
+                        </form>
+                    </li>
+                </div>
             </div>
-        </div>
+
+        }else{
+
+            <li class="nav-item">
+                <form asp-controller="Productos" asp-action="Index" class="d-flex align-items-center">
+                    <input type="text" name="searchString" class="form-control me-2" placeholder="Buscar">
+                    <button type="submit" class="btn btn-outline-light">Buscar</button>
+                </form>
+            </li>
 
 
+            <li class="nav-item">
+                <form asp-controller="Carrito" asp-action="Index">
+                    <button type="submit" class="bt" >
+                        <ion-icon name="cart-outline"></ion-icon>
+                    </button>
+                </form>
+            </li>
 
+            <div class="dropdown-btn">
+                <ion-icon name="person-circle-outline" alt="Botón desplegable"></ion-icon>
+                <div class="dropdown-menu">
 
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                            @User.Identity?.Name!</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+                        asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button type="submit" class="close-ses">Cerrar Sesion</button>
+                        </form>
+                    </li>
+                </div>
+            </div>
+        }
     }
     else
     {
