@@ -28,5 +28,7 @@ namespace LIONFIT.Models
         
         [Column ("imagen")]
         public String? Imagen {get;set;}
+
+        public string? Status { get; set; }
     }
 }
