@@ -11315,19 +11315,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lopez\\.nuget\\packages\\": {}
+    "C:\\Users\\gianc\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lopez\\LIONFIT\\LIONFIT.csproj",
+      "projectUniqueName": "C:\\Users\\gianc\\LIONFIT\\LIONFIT.csproj",
       "projectName": "LIONFIT",
-      "projectPath": "C:\\Users\\lopez\\LIONFIT\\LIONFIT.csproj",
-      "packagesPath": "C:\\Users\\lopez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lopez\\LIONFIT\\obj\\",
+      "projectPath": "C:\\Users\\gianc\\LIONFIT\\LIONFIT.csproj",
+      "packagesPath": "C:\\Users\\gianc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gianc\\LIONFIT\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\lopez\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\gianc\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"

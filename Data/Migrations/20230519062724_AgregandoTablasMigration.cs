@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LIONFIT.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class AgregandoTablasMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,20 +52,6 @@ namespace LIONFIT.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "boleta",
-                columns: table => new
-                {
-                    id_boleta = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    fecha = table.Column<string>(type: "text", nullable: true),
-                    precio_total = table.Column<double>(type: "double precision", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_boleta", x => x.id_boleta);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "categoria",
                 columns: table => new
                 {
@@ -86,7 +72,7 @@ namespace LIONFIT.Data.Migrations
                     id_producto = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     nombre_producto = table.Column<string>(type: "text", nullable: true),
-                    precio_producto = table.Column<double>(type: "double precision", nullable: true),
+                    precio_producto = table.Column<decimal>(type: "numeric", nullable: false),
                     descripcion = table.Column<string>(type: "text", nullable: true),
                     imagen = table.Column<string>(type: "text", nullable: true)
                 },
@@ -96,21 +82,20 @@ namespace LIONFIT.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "registro_usuario",
+                name: "t_pago",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
+                    id_pago = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    nombre = table.Column<string>(type: "text", nullable: true),
-                    apellido_paterno = table.Column<string>(type: "text", nullable: true),
-                    apellido_materno = table.Column<string>(type: "text", nullable: true),
-                    correo = table.Column<string>(type: "text", nullable: true),
-                    password = table.Column<string>(type: "text", nullable: true),
-                    celular = table.Column<string>(type: "text", nullable: true)
+                    PaymenDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    NombreTarjeta = table.Column<string>(type: "text", nullable: true),
+                    NumeroTarjeta = table.Column<string>(type: "text", nullable: true),
+                    MontoTotal = table.Column<decimal>(type: "numeric", nullable: false),
+                    UserId = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_registro_usuario", x => x.id);
+                    table.PrimaryKey("PK_t_pago", x => x.id_pago);
                 });
 
             migrationBuilder.CreateTable(
@@ -219,6 +204,74 @@ namespace LIONFIT.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "boleta",
+                columns: table => new
+                {
+                    id_boleta = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserID = table.Column<string>(type: "text", nullable: true),
+                    ProductoId = table.Column<int>(type: "integer", nullable: true),
+                    Cantidad = table.Column<int>(type: "integer", nullable: false),
+                    Precio = table.Column<decimal>(type: "numeric", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_boleta", x => x.id_boleta);
+                    table.ForeignKey(
+                        name: "FK_boleta_producto_ProductoId",
+                        column: x => x.ProductoId,
+                        principalTable: "producto",
+                        principalColumn: "id_producto");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "t_pedido",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserID = table.Column<string>(type: "text", nullable: true),
+                    Total = table.Column<decimal>(type: "numeric", nullable: false),
+                    pagoId = table.Column<int>(type: "integer", nullable: true),
+                    Status = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_t_pedido", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_t_pedido_t_pago_pagoId",
+                        column: x => x.pagoId,
+                        principalTable: "t_pago",
+                        principalColumn: "id_pago");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "t_detalle_pedido",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ProductoId = table.Column<int>(type: "integer", nullable: true),
+                    Cantidad = table.Column<int>(type: "integer", nullable: false),
+                    Precio = table.Column<decimal>(type: "numeric", nullable: false),
+                    pedidoID = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_t_detalle_pedido", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_t_detalle_pedido_producto_ProductoId",
+                        column: x => x.ProductoId,
+                        principalTable: "producto",
+                        principalColumn: "id_producto");
+                    table.ForeignKey(
+                        name: "FK_t_detalle_pedido_t_pedido_pedidoID",
+                        column: x => x.pedidoID,
+                        principalTable: "t_pedido",
+                        principalColumn: "id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -255,6 +308,26 @@ namespace LIONFIT.Data.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_boleta_ProductoId",
+                table: "boleta",
+                column: "ProductoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_t_detalle_pedido_pedidoID",
+                table: "t_detalle_pedido",
+                column: "pedidoID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_t_detalle_pedido_ProductoId",
+                table: "t_detalle_pedido",
+                column: "ProductoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_t_pedido_pagoId",
+                table: "t_pedido",
+                column: "pagoId");
         }
 
         /// <inheritdoc />
@@ -282,16 +355,22 @@ namespace LIONFIT.Data.Migrations
                 name: "categoria");
 
             migrationBuilder.DropTable(
-                name: "producto");
-
-            migrationBuilder.DropTable(
-                name: "registro_usuario");
+                name: "t_detalle_pedido");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "producto");
+
+            migrationBuilder.DropTable(
+                name: "t_pedido");
+
+            migrationBuilder.DropTable(
+                name: "t_pago");
         }
     }
 }

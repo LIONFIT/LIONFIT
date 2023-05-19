@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LIONFIT.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230427074954_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20230519062724_AgregandoTablasMigration")]
+    partial class AgregandoTablasMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,15 +34,21 @@ namespace LIONFIT.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Fecha")
-                        .HasColumnType("text")
-                        .HasColumnName("fecha");
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("integer");
 
-                    b.Property<double?>("total")
-                        .HasColumnType("double precision")
-                        .HasColumnName("precio_total");
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("numeric");
+
+                    b.Property<int?>("ProductoId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UserID")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductoId");
 
                     b.ToTable("boleta");
                 });
@@ -69,6 +75,93 @@ namespace LIONFIT.Data.Migrations
                     b.ToTable("categoria");
                 });
 
+            modelBuilder.Entity("LIONFIT.Models.DetallePedido", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("numeric");
+
+                    b.Property<int?>("ProductoId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("pedidoID")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProductoId");
+
+                    b.HasIndex("pedidoID");
+
+                    b.ToTable("t_detalle_pedido");
+                });
+
+            modelBuilder.Entity("LIONFIT.Models.Pago", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id_pago");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("MontoTotal")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("NombreTarjeta")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NumeroTarjeta")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("PaymenDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("t_pago");
+                });
+
+            modelBuilder.Entity("LIONFIT.Models.Pedido", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Status")
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("UserID")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("pagoId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("pagoId");
+
+                    b.ToTable("t_pedido");
+                });
+
             modelBuilder.Entity("LIONFIT.Models.Producto", b =>
                 {
                     b.Property<int>("Id")
@@ -90,51 +183,13 @@ namespace LIONFIT.Data.Migrations
                         .HasColumnType("text")
                         .HasColumnName("nombre_producto");
 
-                    b.Property<double?>("Precio")
-                        .HasColumnType("double precision")
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("numeric")
                         .HasColumnName("precio_producto");
 
                     b.HasKey("Id");
 
                     b.ToTable("producto");
-                });
-
-            modelBuilder.Entity("LIONFIT.Models.Registro_usuario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ApellidoMat")
-                        .HasColumnType("text")
-                        .HasColumnName("apellido_materno");
-
-                    b.Property<string>("ApellidoPat")
-                        .HasColumnType("text")
-                        .HasColumnName("apellido_paterno");
-
-                    b.Property<string>("CorreoElectronico")
-                        .HasColumnType("text")
-                        .HasColumnName("correo");
-
-                    b.Property<string>("Nombre")
-                        .HasColumnType("text")
-                        .HasColumnName("nombre");
-
-                    b.Property<string>("celular")
-                        .HasColumnType("text")
-                        .HasColumnName("celular");
-
-                    b.Property<string>("password")
-                        .HasColumnType("text")
-                        .HasColumnName("password");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("registro_usuario");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -335,6 +390,39 @@ namespace LIONFIT.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("LIONFIT.Models.Boleta", b =>
+                {
+                    b.HasOne("LIONFIT.Models.Producto", "Producto")
+                        .WithMany()
+                        .HasForeignKey("ProductoId");
+
+                    b.Navigation("Producto");
+                });
+
+            modelBuilder.Entity("LIONFIT.Models.DetallePedido", b =>
+                {
+                    b.HasOne("LIONFIT.Models.Producto", "Producto")
+                        .WithMany()
+                        .HasForeignKey("ProductoId");
+
+                    b.HasOne("LIONFIT.Models.Pedido", "pedido")
+                        .WithMany()
+                        .HasForeignKey("pedidoID");
+
+                    b.Navigation("Producto");
+
+                    b.Navigation("pedido");
+                });
+
+            modelBuilder.Entity("LIONFIT.Models.Pedido", b =>
+                {
+                    b.HasOne("LIONFIT.Models.Pago", "pago")
+                        .WithMany()
+                        .HasForeignKey("pagoId");
+
+                    b.Navigation("pago");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
