@@ -3,19 +3,20 @@
     ViewData["Title"] = "Pedido";  
 }
 
-<h1>Pedidos</h1>
+<div class="cuerpo-pedidos">
+<h1 class="titulo-pedido">Pedidos</h1>
 
 
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th class="centraitems-pedido">
                 @Html.DisplayNameFor(model => model.UserID)
             </th>
-            <th>
+            <th class="centraitems-pedido">
                 @Html.DisplayNameFor(model => model.Total)
             </th>
-            <th>
+            <th class="centraitems-pedido">
                 @Html.DisplayNameFor(model => model.Status)
             </th>
             <th></th>
@@ -24,16 +25,18 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            <td class="centraitems-pedido">
                 @Html.DisplayFor(modelItem => item.UserID)
             </td>
-            <td>
+            <td class="centraitems-pedido">
                 @Html.DisplayFor(modelItem => item.Total)
             </td>
-            <td>
+            <td class="centraitems-pedido">
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+</div>

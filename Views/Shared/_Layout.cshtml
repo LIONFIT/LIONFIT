@@ -10,13 +10,16 @@
     <link rel="stylesheet" href="~/css/footersite.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/details.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/carrito.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/css/nosotros.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/nosotros.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/pago.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/pedidos.css" asp-append-version="true" />
 
-        <link rel="stylesheet" href="~/css/edit.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/edit.css" asp-append-version="true" />
 
     <link rel="stylesheet" href="~/LIONFIT.styles.css" asp-append-version="true" />
-    
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
@@ -39,26 +42,33 @@
 
 
             <header>
-                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3" style="background-color: #E14545;">
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3"
+                    style="background-color: #E14545;">
                     <div class="container-fluid">
                         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                            <img src="https://drive.google.com/uc?id=1pR1ZadN2j-3FoyruYQ8sNyjfGKweLmJW" alt="LIONFIT" style="max-height: 60px;width: 50px;">
+                            <img src="https://drive.google.com/uc?id=1pR1ZadN2j-3FoyruYQ8sNyjfGKweLmJW" alt="LIONFIT"
+                                style="max-height: 60px;width: 50px;">
                         </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                             <ul class="navbar-nav flex-grow-1  ">
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Home"
+                                        asp-action="Index">Inicio</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Productos" asp-action="Index">Productos</a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Productos"
+                                        asp-action="Index">Productos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Nosotros">Nosotros</a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Home"
+                                        asp-action="Nosotros">Nosotros</a>
                                 </li>
-                                 <partial name="_MenuAdminPartial" /> 
+                                <partial name="_MenuAdminPartial" />
                             </ul>
                             <partial name="_LoginPartial" />
                         </div>
@@ -83,7 +93,7 @@
                                 <li><a href="#">privacy policy</a></li>
                             </ul>
                         </div>
-                        
+
                         <div class="footer-col">
                             <h4>Categorías</h4>
                             <ul>
@@ -97,14 +107,20 @@
                             <h4>Consultas</h4>
                             <ul>
                                 <li><a asp-controller="Carrito" asp-action="Index">Mi Carrito</a></li>
-                                <li><p>Medios de Pago:</p></li>
-                                <li><p style="font-size: 40px;"> <i class="fab fa-cc-visa"></i> - <i class="fab fa-cc-mastercard"></i></p></li>
+                                <li>
+                                    <p>Medios de Pago:</p>
+                                </li>
+                                <li>
+                                    <p style="font-size: 40px;"> <i class="fab fa-cc-visa"></i> - <i
+                                            class="fab fa-cc-mastercard"></i></p>
+                                </li>
                             </ul>
                         </div>
                         <div class="footer-col">
                             <h4>Redes Sociales</h4>
                             <div class="social-links">
-                                <a class="fb" href="https://www.facebook.com/people/LionFit-Store/100092302690244/"><i class="fab fa-facebook-f"></i></a>
+                                <a class="fb" href="https://www.facebook.com/people/LionFit-Store/100092302690244/"><i
+                                        class="fab fa-facebook-f"></i></a>
                                 <a class="tw" href="https://twitter.com/LionFit2003"><i class="fab fa-twitter"></i></a>
                                 <a class="ig" href="#"><i class="fab fa-instagram"></i></a>
                                 <a class="gh" href="https://github.com/LIONFIT"><i class="fab fa-github"></i></a>
@@ -116,6 +132,8 @@
         </div>
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

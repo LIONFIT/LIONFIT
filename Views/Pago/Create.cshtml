@@ -1,63 +1,210 @@
 @model LIONFIT.Models.Pago
 @{
-    ViewData["Title"] = "Pago";
+	ViewData["Title"] = "Pago";
 }
-<h1>@ViewData["Title"]</h1>
+<div class="contenedor">
 
-    <div class="container">
+	<!-- Tarjeta -->
+	<section class="tarjeta" id="tarjeta">
+		<div class="delantera">
+			<div class="logo-marca" id="logo-marca">
+				 <img src="https://drive.google.com/uc?id=1ESNWvaSNXukyjL7SKctJ8j50UQHwELMc" alt="">
+			</div>
+			<img src="https://drive.google.com/uc?id=1Jj871cIuwEZjt_jciA_x8a5VoW3EU0AN" class="chip" alt="">
+			<div class="datos">
+				<div class="grupo" id="numero">
+					<p class="label">Número Tarjeta</p>
+					<p class="numero">#### #### #### ####</p>
+				</div>
+				<div class="flexbox">
+					<div class="grupo" id="nombre">
+						<p class="label">Nombre Tarjeta</p>
+						<p class="nombre">Jhon Doe</p>
+					</div>
 
-        <div class="row">
-          <div class="col-sm-10 mt-5">
-           <form asp-controller="Pago" asp-action="Pagar">
-              <div class="form-group row">
-                <input type="hidden" asp-for="UserId"/>
-                <div class="col-sm-2">
-                  <label asp-for="NombreTarjeta" class="control-label"></label>
-                </div>
-                <div class="col-sm-2">
-                  <input asp-for="NombreTarjeta" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-sm-2">
-                  <label asp-for="NumeroTarjeta" class="control-label"></label>
-                </div>
-                <div class="col-sm-2">
-                  <input asp-for="NumeroTarjeta" class="form-control" data-inputmask="'mask': '9999-9999-9999-9999'" />
-                </div>
-              </div>              
-              <div class="form-group row">
-                <div class="col-sm-2">
-                  <label asp-for="DueDateYYMM" class="control-label"></label>
-                </div>
-                <div class="col-sm-2">
-                  <input asp-for="DueDateYYMM" class="form-control" data-inputmask="'mask': '99/99', 'placeholder': 'yy/mm'" />
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-sm-2">
-                  <label asp-for="cVV" class="control-label"></label>
-                </div>
-                <div class="col-sm-2">
-                  <input asp-for="cVV" class="form-control" data-inputmask="'mask': '999', 'placeholder': '999'" />
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-sm-2">
-                  <label asp-for="MontoTotal" class="control-label"></label>
-                </div>
-                <div class="col-sm-2">
-                  <input asp-for="MontoTotal" class="form-control" data-thousands="," data-decimal="." />
-                </div>
-              </div>  
-              <div class="form-group row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-2">
-                  <button type="submit" class="btn btn-primary">Pagar</button> 
-                </div>
-              </div>
-            </form>
-            <h1>@ViewData["Message"]</h1>
-          </div>
-        </div>
-    </div>
+					<div class="grupo" id="expiracion">
+						<p class="label">Expiracion</p>
+						<p class="expiracion"><span class="mes">MM</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="trasera">
+			<div class="barra-magnetica"></div>
+			<div class="datos">
+				<div class="grupo" id="firma">
+					<p class="label">Firma</p>
+					<div class="firma">
+						<p></p>
+					</div>
+				</div>
+				<div class="grupo" id="ccv">
+					<p class="label">CCV</p>
+					<p class="ccv"></p>
+				</div>
+			</div>
+			<p class="leyenda">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus exercitationem,
+				voluptates illo.</p>
+			<a href="#" class="link-banco">www.tubanco.com</a>
+		</div>
+	</section>
+
+	<!-- Contenedor Boton Abrir Formulario -->
+	<div class="contenedor-btn">
+		<button class="btn-abrir-formulario" id="btn-abrir-formulario">
+			<i class="fas fa-plus"></i>
+		</button>
+	</div>
+
+	<!-- Formulario -->
+	<form id="formulario-tarjeta" class="formulario-tarjeta" asp-controller="Pago" asp-action="Pagar"
+		onsubmit="return validateForm()">
+
+	<div class="form-group row">
+	  <input type="hidden" asp-for="UserId" />
+	  </div>
+		<div class="grupo">
+			<label for="inputNumero">Número Tarjeta</label>
+			<input type="text"  asp-for="NumeroTarjeta"  id="inputNumero" maxlength="19" autocomplete="off">
+		</div>
+		<div class="grupo">
+			<label for="inputNombre">Nombre</label>
+			<input type="text"   asp-for="NombreTarjeta" id="inputNombre" maxlength="19" autocomplete="off">
+		</div>
+		<div class="flexbox">
+			<div class="grupo expira">
+				<label for="DueDateYYMM">Expiracion</label>
+				<div class="flexbox">
+					<div class="grupo-select">
+							<label for="DueDateYYMM">Fecha</label>
+  						<input asp-for="DueDateYYMM" type="date" class="form-control" id="dueDate" data-inputmask="'mask': '99/99', 'placeholder': 'yy/mm'" />					</div>
+					
+				</div>
+			</div>
+
+			<div class="grupo ccv">
+				<br>
+				<label for="inputCCV">CCV</label>
+				<input type="text" asp-for="cVV" id="inputCCV" maxlength="3">
+			</div>
+		</div>
+
+		<div class="col">
+							
+			<label for="MontoTotal">Monto a Pagar</label>
+			<input asp-for="MontoTotal" type="number" class="form-control readonly " id="montoTotal" data-thousands=","
+				data-decimal="." />
+		</div>
+		<button type="submit" class="btn-enviar">Pagar</button>
+	</form>
+</div>
+<script>
+
+
+
+	const tarjeta = document.querySelector('#tarjeta'),
+		btnAbrirFormulario = document.querySelector('#btn-abrir-formulario'),
+		formulario = document.querySelector('#formulario-tarjeta'),
+		numeroTarjeta = document.querySelector('#tarjeta .numero'),
+		nombreTarjeta = document.querySelector('#tarjeta .nombre'),
+		logoMarca = document.querySelector('#logo-marca'),
+		firma = document.querySelector('#tarjeta .firma p'),
+	ccv = document.querySelector('#tarjeta .ccv');
+
+	// * Volteamos la tarjeta para mostrar el frente.
+	const mostrarFrente = () => {
+		if (tarjeta.classList.contains('active')) {
+			tarjeta.classList.remove('active');
+		}
+	}
+
+	// * Rotacion de la tarjeta
+	tarjeta.addEventListener('click', () => {
+		tarjeta.classList.toggle('active');
+	});
+
+	// * Boton de abrir formulario
+	btnAbrirFormulario.addEventListener('click', () => {
+		btnAbrirFormulario.classList.toggle('active');
+		formulario.classList.toggle('active');
+	});
+
+	// * Input numero de tarjeta
+	formulario.inputNumero.addEventListener('keyup', (e) => {
+		let valorInput = e.target.value;
+
+		formulario.inputNumero.value = valorInput
+			// Eliminamos espacios en blanco
+			.replace(/\s/g, '')
+			// Eliminar las letras
+			.replace(/\D/g, '')
+			// Ponemos espacio cada cuatro numeros
+			.replace(/([0-9]{4})/g, '$1 ')
+			// Elimina el ultimo espaciado
+			.trim();
+
+		numeroTarjeta.textContent = valorInput;
+
+		if (valorInput == '') {
+			numeroTarjeta.textContent = '#### #### #### ####';
+
+			logoMarca.innerHTML = '';
+		}
+
+		if (valorInput[0] == 4) {
+			logoMarca.innerHTML = '';
+			const imagen = document.createElement('img');
+			imagen.src = 'https://drive.google.com/uc?id=1ESNWvaSNXukyjL7SKctJ8j50UQHwELMc';
+			logoMarca.appendChild(imagen);
+		} else if (valorInput[0] == 5) {
+			logoMarca.innerHTML = '';
+			const imagen = document.createElement('img');
+			imagen.src = 'https://drive.google.com/uc?id=1-jfcrvHQRMPMfxve1_4s4Sao3VkNOa2N';
+			logoMarca.appendChild(imagen);
+		}
+
+		// Volteamos la tarjeta para que el usuario vea el frente.
+		mostrarFrente();
+	});
+
+	// * Input nombre de tarjeta
+	formulario.inputNombre.addEventListener('keyup', (e) => {
+		let valorInput = e.target.value;
+
+		formulario.inputNombre.value = valorInput.replace(/[0-9]/g, '');
+		nombreTarjeta.textContent = valorInput;
+		firma.textContent = valorInput;
+
+		if (valorInput == '') {
+			nombreTarjeta.textContent = 'Jorge';
+		}
+
+		mostrarFrente();
+	});
+
+	// * CCV
+	formulario.inputCCV.addEventListener('keyup', () => {
+		if (!tarjeta.classList.contains('active')) {
+			tarjeta.classList.toggle('active');
+		}
+
+		formulario.inputCCV.value = formulario.inputCCV.value
+			// Eliminar los espacios
+			.replace(/\s/g, '')
+			// Eliminar las letras
+			.replace(/\D/g, '');
+
+		ccv.textContent = formulario.inputCCV.value;
+	});
+	
+	
+</script>
+
+
+
+
+
+
+
+
