@@ -16,23 +16,25 @@
     }
     
     .table {
-        background-color: rgba(255, 244, 244, 0.9);
-        border-radius: 10px;
-       
-        border-color: black;
+      background-color: rgba(255, 244, 244, 0.9);
+      border-radius: 10px;
+     text-align: center;
+      border-color: rgb(191, 191, 191);
+      font-size: 16px;
+
       }
       
       .table tr:nth-child(even) {
-        background-color: rgba(0, 0, 0, 0.759);
-        color:aliceblue;
-        
-        border-radius: 10px;
+        background-color: rgba(214, 214, 214, 0.451);
+        border-radius: 10px;
+
       }
       
-      .table th,
-      .table td {
-        padding: 8px;
+      .table thead{
+        background-color: rgba(176, 176, 176, 0.759);
+        border-radius: 10px;
       }
+
 
       .edid{
         font-size: 25px !important;
