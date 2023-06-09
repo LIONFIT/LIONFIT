@@ -22,27 +22,31 @@ namespace LIONFIT.Controllers
         private readonly ApplicationDbContext _dbcontext;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IDistributedCache _cache;
+
+         private readonly SignInManager<IdentityUser> _signInManager;
 //aca inyectamos la dependencias de bd  para que el controller producto pueda usar la bd
-        public CatalogoProductosController(ILogger<CatalogoProductosController> logger,ApplicationDbContext context, UserManager<IdentityUser> userManager, IDistributedCache cache)
+        public CatalogoProductosController(ILogger<CatalogoProductosController> logger,ApplicationDbContext context, UserManager<IdentityUser> userManager, IDistributedCache cache,SignInManager<IdentityUser> signInManager)
         {
             _logger = logger;
             _dbcontext= context;
             _cache = cache;
             _userManager= userManager;
+            _signInManager = signInManager;
         }
 
-        [HttpGet]
-        [Route("/CatalagoProductos/")]
+        
         public async Task<IActionResult> Index( string? searchString)
         {
            var productos = from o in _dbcontext.Dataproducto select o;
             //SELECT * FROM t_productos -> &
             if(!String.IsNullOrEmpty(searchString)){
                 searchString=searchString.ToLower();
-                productos = productos.Where(s => s.NomProducto.ToLower().Contains(searchString) && s.Status.Equals("activo") ) ; 
+                productos = productos.Where(s => s.NomProducto.ToLower().Contains(searchString)) ; 
+
             }
-            
+             
             return View(await productos.ToListAsync());
+            
         }
 
         public async Task<IActionResult> Details(int? id){
