@@ -118,6 +118,19 @@ namespace LIONFIT.Controllers
             return View(boleta);
         }
 
+        [HttpPost]
+        public  async Task<IActionResult> Delete(int? id){
+                
+                if(id == null){
+                    return NotFound();
+                }
+                var boleta= await _dbcontext.Databoleta.FindAsync(id);
+                _dbcontext.Databoleta.Remove(boleta);
+                await _dbcontext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using LIONFIT.Data;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using StackExchange.Redis;
+using LIONFIT.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+//REGISTRAR LA LOGICA CUSTOMIZADA Y REUZABLE 
+builder.Services.AddScoped<ProductoService,ProductoService>();
 
 builder.Services.AddStackExchangeRedisCache(options =>
     {

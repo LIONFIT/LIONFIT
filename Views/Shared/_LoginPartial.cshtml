@@ -14,7 +14,7 @@
         @if(roles.Contains("admin") ){  
 
             <li class="nav-item">
-                <form asp-controller="Productos" asp-action="Index" class="d-flex align-items-center">
+                <form asp-controller="Producto" asp-action="Index" class="d-flex align-items-center">
                     <input type="text" name="searchString" class="form-control me-2" placeholder="Buscar">
                     <button type="submit" class="btn btn-outline-light">Buscar</button>
                 </form>
@@ -41,7 +41,7 @@
         }else{
 
             <li class="nav-item">
-                <form asp-controller="Productos" asp-action="Index" class="d-flex align-items-center">
+                <form asp-controller="Producto" asp-action="Index" class="d-flex align-items-center">
                     <input type="text" name="searchString" class="form-control me-2" placeholder="Buscar">
                     <button type="submit" class="btn btn-outline-light">Buscar</button>
                 </form>

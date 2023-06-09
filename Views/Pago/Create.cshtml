@@ -98,6 +98,7 @@
 		</div>
 		<button type="submit" class="btn-enviar">Pagar</button>
 	</form>
+	<h1>@ViewData["Message"]</h1>
 </div>
 <script>
 
@@ -177,7 +178,7 @@
 		firma.textContent = valorInput;
 
 		if (valorInput == '') {
-			nombreTarjeta.textContent = 'Jorge';
+			nombreTarjeta.textContent = 'Nombre';
 		}
 
 		mostrarFrente();

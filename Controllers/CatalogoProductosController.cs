@@ -11,18 +11,19 @@ using LIONFIT.Data;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Identity;
+using LIONFIT.Service;
 
 namespace LIONFIT.Controllers
 {
    
-    public class ProductosController : Controller
+    public class CatalogoProductosController : Controller
     {
-        private readonly ILogger<ProductosController> _logger;
+        private readonly ILogger<CatalogoProductosController> _logger;
         private readonly ApplicationDbContext _dbcontext;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IDistributedCache _cache;
 //aca inyectamos la dependencias de bd  para que el controller producto pueda usar la bd
-        public ProductosController(ILogger<ProductosController> logger,ApplicationDbContext context, UserManager<IdentityUser> userManager, IDistributedCache cache)
+        public CatalogoProductosController(ILogger<CatalogoProductosController> logger,ApplicationDbContext context, UserManager<IdentityUser> userManager, IDistributedCache cache)
         {
             _logger = logger;
             _dbcontext= context;
@@ -30,7 +31,8 @@ namespace LIONFIT.Controllers
             _userManager= userManager;
         }
 
-        
+        [HttpGet]
+        [Route("/CatalagoProductos/")]
         public async Task<IActionResult> Index( string? searchString)
         {
            var productos = from o in _dbcontext.Dataproducto select o;
