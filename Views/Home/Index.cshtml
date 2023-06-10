@@ -76,6 +76,146 @@
         </div>
    </div>
 </div>
+
 </div>
 <br>
 
+<style>
+
+      body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .indice-IMC-container {
+      max-width: 400px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    .indice-IMC-form {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+    
+    .indice-IMC-label {
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    
+    .indice-IMC-input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .indice-IMC-button {
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .indice-IMC-button:hover {
+      background-color: #45a049;
+    }
+    
+    .indice-IMC-result-container {
+      background-color: #f5f5f5;
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .indice-IMC-result-label {
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="indice-IMC-container">
+    <h1>BMI Calculator</h1>
+    
+    <form id="bmi-form" class="indice-IMC-form">
+      <label for="weight" class="indice-IMC-label">Peso (kg):</label>
+      <input type="number" id="weight" step="0.01" class="indice-IMC-input" required>
+      
+      <label for="height" class="indice-IMC-label">Altura (m):</label>
+      <input type="number" id="height" step="0.01" class="indice-IMC-input" required>
+      
+      <button type="submit" class="indice-IMC-button">Calcular BMI</button>
+    </form>
+    
+    <div id="result-container" class="indice-IMC-result-container"></div>
+  </div>
+
+  <script>
+    async function getBMI(weight, height) {
+      var bmiRequestOptions = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': '2c613b6f23msh5bddd976c184efap1a98d6jsn955592e0f887',
+          'X-RapidAPI-Host': 'body-mass-index-bmi-calculator.p.rapidapi.com'
+        }
+      };
+      
+      var bmiResponse = await fetch(`https://body-mass-index-bmi-calculator.p.rapidapi.com/metric?weight=${weight}&height=${height}`, bmiRequestOptions);
+      var bmiData = await bmiResponse.json();
+      
+      var categoryRequestOptions = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': '2c613b6f23msh5bddd976c184efap1a98d6jsn955592e0f887',
+          'X-RapidAPI-Host': 'body-mass-index-bmi-calculator.p.rapidapi.com'
+        }
+      };
+      
+      var categoryResponse = await fetch(`https://body-mass-index-bmi-calculator.p.rapidapi.com/weight-category?bmi=${bmiData.bmi}`, categoryRequestOptions);
+      var categoryData = await categoryResponse.json();
+      
+      return {
+        bmi: bmiData.bmi,
+        category: categoryData.bmi_category
+      };
+    }
+    
+    document.getElementById('bmi-form').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      
+      var weight = document.getElementById('weight').value;
+      var height = document.getElementById('height').value;
+      
+      try {
+        var result = await getBMI(weight, height);
+        
+        var resultContainer = document.getElementById('result-container');
+        resultContainer.innerHTML = `
+          <p class="indice-IMC-result-label">BMI:</p>
+          <p>${result.bmi}</p>
+          <p class="indice-IMC-result-label">Category:</p>
+          <p>${result.category}</p>
+        `;
+      } catch (error) {
+        console.error(error);
+        // Manejo de errores
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -9,3 +9,19 @@ function iniciarMap(){
       map: map
     });
 }
+
+
+ // Agrega un evento de escucha al formulario
+ document.getElementById("bmi-form").addEventListener("submit", function(event) {
+  event.preventDefault(); // Evita que se envíe el formulario
+  
+  const weight = document.getElementById("weight").value;
+  const height = document.getElementById("height").value;
+  
+  calculateBMI(weight, height);
+});
+
+/*----------------------------------------API IMC-------------------------------------------------*/
+// Realiza la llamada a la API y muestra los resultados
+
+/*----------------------------------------------------------------------------------------------*/
