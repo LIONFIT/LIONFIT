@@ -7,17 +7,30 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    IdentityUser myidentity  = await Task.Run(() => UserManager.GetUserAsync(User));
+    IdentityUser myidentity = await Task.Run(() => UserManager.GetUserAsync(User));
     var roles = await Task.Run(() => UserManager.GetRolesAsync(myidentity));
 
-    @if(roles.Contains("admin") ){    
+    @if (roles.Contains("admin"))
+    {
         <li class="nav-item">
             <a class="nav-link text-white bi bi-cart" asp-area="" asp-controller="Pedido" asp-action="Index">Pedidos</a>
-        </li>     
+        </li>
         <li class="nav-item">
             <a class="nav-link text-white bi bi-cart" asp-area="" asp-controller="Producto" asp-action="Index">Productos</a>
-        </li>   
+        </li>
 
     }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="" asp-controller="CatalogoProductos" asp-action="Index">Productos</a>
+        </li>
+    }
 
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-white" asp-area="" asp-controller="CatalogoProductos" asp-action="Index">Productos</a>
+    </li>
 }
