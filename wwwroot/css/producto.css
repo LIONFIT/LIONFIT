@@ -1,0 +1,35 @@
+
+
+.titulo-producto{
+    text-align: center;
+    background-color: rgb(230, 230, 230) !important;
+}
+
+.contenedor-producto{
+padding:50px;
+}
+
+.table-producto{
+    width: 100%;
+}
+
+/* crear producto */
+
+.btn-producto{
+    width: 100%;
+}
+
+.form-producto-edit{
+    font-weight: bold;
+}
+.titulo-producto-crear{
+text-align: center;
+background-color: rgb(230, 230, 230) !important;
+border-radius: 15px;
+}
+.fondo-producto-crear{
+
+    background-color: rgb(230, 230, 230);
+    border-radius: 15px;
+    padding: 15px;
+}

@@ -4,48 +4,58 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="container">
+<h1 class="titulo-producto-crear" >NUEVO PRODUCTO</h1>
 
-<h4>Producto</h4>
+
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NomProducto" class="control-label"></label>
-                <input asp-for="NomProducto" class="form-control" />
-                <span asp-validation-for="NomProducto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Precio" class="control-label"></label>
-                <input asp-for="Precio" class="form-control" />
-                <span asp-validation-for="Precio" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DesProducto" class="control-label"></label>
-                <input asp-for="DesProducto" class="form-control" />
-                <span asp-validation-for="DesProducto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Imagen" class="control-label"></label>
-                <input asp-for="Imagen" class="form-control" />
-                <span asp-validation-for="Imagen" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="row">
+    <div class="col-md-4">
+        <div class="fondo-producto-crear">
+            <form class="form-producto-edit" asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="NomProducto" class="control-label">NOMBRE DEL PRODUCTO</label>
+                    <input asp-for="NomProducto" class="form-control" />
+                    <span asp-validation-for="NomProducto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Precio" class="control-label">PRECIO</label>
+                    <input asp-for="Precio" class="form-control" />
+                    <span asp-validation-for="Precio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DesProducto" class="control-label">DESCRIPCION DEL PRODUCTO</label>
+                    <input asp-for="DesProducto" class="form-control" />
+                    <span asp-validation-for="DesProducto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Imagen" class="control-label">IMAGEN</label>
+                    <input asp-for="Imagen" class="form-control" />
+                    <span asp-validation-for="Imagen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Status" class="control-label">ESTATUS</label>
+                    <input asp-for="Status" class="form-control" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="CREAR" class="btn btn-primary btn-producto" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+<a class="minimal-button" asp-action="Index" >  
+                    <span>REGRESAR</span>
+                    <span class="button-icon"></span>
+</a>
+
+
 </div>
 
 @section Scripts {

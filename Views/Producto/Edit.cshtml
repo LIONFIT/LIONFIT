@@ -3,51 +3,56 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<div class="container">
 
-<h1>Edit</h1>
+<h1 class="titulo-producto-crear">EDITAR PRODUCTO</h1>
 
-<h4>Producto</h4>
 <hr />
+</div>
 <div class="row">
     <div class="col-md-4">
+        <div class="fondo-producto-crear">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="NomProducto" class="control-label"></label>
+                <label asp-for="NomProducto" class="control-label">NOMBRE DEL PRODUCTO</label>
                 <input asp-for="NomProducto" class="form-control" />
                 <span asp-validation-for="NomProducto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Precio" class="control-label"></label>
+                <label asp-for="Precio" class="control-label">PRECIO</label>
                 <input asp-for="Precio" class="form-control" />
                 <span asp-validation-for="Precio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DesProducto" class="control-label"></label>
+                <label asp-for="DesProducto" class="control-label">DESCRIPCION DEL PRODUCTO</label>
                 <input asp-for="DesProducto" class="form-control" />
                 <span asp-validation-for="DesProducto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Imagen" class="control-label"></label>
+                <label asp-for="Imagen" class="control-label">IMAGEN</label>
                 <input asp-for="Imagen" class="form-control" />
                 <span asp-validation-for="Imagen" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
+                <label asp-for="Status" class="control-label">ESTATUS</label>
                 <input asp-for="Status" class="form-control" />
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="GUARDAR" class="btn btn-primary btn-producto" />
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
+
+<div class="container">
+<a class="minimal-button" asp-action="Index" >  
+                    <span>REGRESAR</span>
+                    <span class="button-icon"></span>
+</a></div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -3,13 +3,23 @@
 @{
     ViewData["Title"] = "Index";
 }
+<div class="contenedor-producto">
+<h1 class="titulo-producto">PRODUCTO</h1>
 
-<h1>Index</h1>
+<div class="boton-producto">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<a class="minimal-button" asp-action="Create" >  
+                    <span>CREAR PRODUCTO</span>
+                    <span class="button-icon"></span>
+</a>
+
+
+
+
+<hr>
+
+
+<table class="table table-producto">
     <thead>
         <tr>
             <th>
@@ -57,3 +67,4 @@
 }
     </tbody>
 </table>
+</div>
