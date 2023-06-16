@@ -4,6 +4,8 @@
     .Title_h1 {
         margin: 20px auto;
         text-align: center;
+        color:rgb(38, 38, 38);
+        background-color: rgb(239, 239, 239);
     }
 
     .ContainerFood {
@@ -17,14 +19,15 @@
 
     .ContainerFood_card {
         width: 350px;
-        border: solid #FFD65B 2px;
+        border: solid #d35f0d 2px;
         border-radius: 10px;
         padding: 20px;
-        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+        box-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);
         display: flex;
         flex-direction: column;
         gap: 20px;
         align-items: center;
+        background-color: rgb(235, 235, 235);
     }
 
     .SearchForm {
@@ -42,12 +45,18 @@
 
     .SearchForm input[type="submit"] {
         padding: 10px 20px;
-        background-color: #FFD65B;
+        background-color: #d17a1c;
         border: none;
         border-radius: 5px;
         color: white;
         cursor: pointer;
     }
+.imagen-comida{
+width:"200"; 
+height:"200";
+
+}
+
 </style>
 
     <h1 class="Title_h1">ALIMENTOS NUTRITIVOS</h1>
@@ -58,13 +67,13 @@
         <input type="submit" value="Buscar">
     </form>
 </div>
-
+              
 <section class="ContainerFood">
     @foreach (var alimentos in Model)
     {
         <div class="ContainerFood_card">
             <h3>@alimentos.Title</h3>
-            <img src="@alimentos.Image" alt="Imagen de @alimentos.Title" width="200" height="200" />
+            <img class="imagen-comida" src="@alimentos.Image" alt="Imagen de @alimentos.Title"  />
         </div>
     }
 </section>
