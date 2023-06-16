@@ -14,7 +14,7 @@
         @if(roles.Contains("admin") ){  
 
             <li class="nav-item">
-                <form asp-controller="Producto" asp-action="Index" class="d-flex align-items-center">
+                <form asp-controller="CatalogoProductos" asp-action="Index" class="d-flex align-items-center">
                     <input type="text" name="searchString" class="form-control me-2" placeholder="Buscar">
                     <button type="submit" class="btn btn-outline-light">Buscar</button>
                 </form>
@@ -41,7 +41,7 @@
         }else{
 
             <li class="nav-item">
-                <form asp-controller="Producto" asp-action="Index" class="d-flex align-items-center">
+                <form asp-controller="CatalogoProductos" asp-action="Index" class="d-flex align-items-center">
                     <input type="text" name="searchString" class="form-control me-2" placeholder="Buscar">
                     <button type="submit" class="btn btn-outline-light">Buscar</button>
                 </form>
@@ -79,7 +79,7 @@
     {
 
         <li class="nav-item">
-            <form asp-controller="Productos" asp-action="Index" class="d-flex align-items-center">
+            <form asp-controller="CatalogoProductos" asp-action="Index" class="d-flex align-items-center">
                 <input type="text" name="searchString" class="form-control me-2" placeholder="Buscar">
                 <button type="submit" class="btn btn-outline-light">Buscar</button>
             </form>
@@ -88,8 +88,8 @@
         <div class="dropdown-btn">
             <ion-icon name="person-circle-outline" alt="Botón desplegable"></ion-icon>
             <div class="dropdown-menu">
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Registrar</a>
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Inicio Sesion</a>
 
             </div>
         </div>
