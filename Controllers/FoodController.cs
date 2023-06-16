@@ -14,37 +14,49 @@ namespace LIONFIT.Controllers
         private readonly ILogger<FoodController> _logger;
         private readonly FoodIntegration _food ;
 
-        public FoodController(ILogger<FoodController> logger,FoodIntegration food){
-            _logger=logger;
-            _food=food;
-        }
+        public FoodController(ILogger<FoodController> logger, FoodIntegration food)
+    {
+        _logger = logger;
+        _food = food;
+    }
 
-        [HttpGet("")]
-        public async Task<IActionResult> Index(string search){
+    [HttpGet("")]
+public async Task<IActionResult> Index(string search)
+{
+    try
+    {
+        var alimentos = await _food.GetAlimentosAsync();
+        var dataComidas = new List<Alimento>();
 
-            var dataComidas  = await FetchApiData();
-
-            if (!string.IsNullOrEmpty(search))
-            {
-                dataComidas = dataComidas.Where(p => p.Title.ToLower().Contains(search.ToLower())).ToList();
-            }
-
-            ViewData["Search"] = search;
-            return View("~/Views/Food/Index.cshtml", dataComidas);
-        }
-
-        [HttpGet("FetchApi")]
-        public async Task<List<Alimento>> FetchApiData(){
-            var apiData = await _food.GetAlimentosAsync();
-            return apiData;
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        [HttpGet("error")]
-        public IActionResult Error()
+        if (alimentos != null && alimentos.Count > 0)
         {
-            return View("Error!");
+            if (string.IsNullOrEmpty(search))
+            {
+                dataComidas = alimentos;
+            }
+            else
+            {
+                dataComidas = alimentos.Where(p => p.Title.ToLower().Contains(search.ToLower())).ToList();
+            }
         }
+
+        ViewData["Search"] = search;
+        return View("~/Views/Food/Index.cshtml", dataComidas);
+    }
+    catch (Exception ex)
+    {
+        // Manejar la excepción adecuadamente, por ejemplo, mostrar un mensaje de error en la vista
+        ViewBag.ErrorMessage = $"Error al obtener los datos de la API: {ex.Message}";
+        return View("Error");
+    }
+}
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    [HttpGet("error")]
+    public IActionResult Error()
+    {
+        return View("Error!");
+    }
 
     }
 }

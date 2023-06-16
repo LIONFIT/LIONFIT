@@ -12,13 +12,13 @@ namespace LIONFIT.Models
         public int Id { get; set; }
 
         [JsonPropertyName("title")]
-        public string Title { get; set; }
+    public string Title { get; set; }
 
-        [JsonPropertyName("image")]
-        public string Image { get; set; }
+    [JsonPropertyName("image")]
+    public string Image { get; set; }
 
-        [JsonPropertyName("imageType")]
-        public string ImageType { get; set; }
+    [JsonPropertyName("imageType")]
+    public string ImageType { get; set; }
 
     }
 }

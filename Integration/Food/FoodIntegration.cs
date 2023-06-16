@@ -14,7 +14,7 @@ namespace LIONFIT.Integration.Food
         private readonly ILogger<FoodIntegration> _logger;
 
          private const string API_URL = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch";
-        private const string API_KEY = "231ad41d4cmsh0a8b886184382d6p1aed18jsn1c8e8cfe5e92";
+        private const string API_KEY = "c757288a3bmsh2bfcbcba76e87c3p16c5d8jsn5ac1593da03c";
         private const string API_HEADER_KEY = "X-RapidAPI-Key";
 
         private readonly HttpClient httpClient;
@@ -25,24 +25,42 @@ namespace LIONFIT.Integration.Food
             httpClient.DefaultRequestHeaders.Add(API_HEADER_KEY,API_KEY);
         }
 
-        public async Task<List<Alimento>> GetAlimentosAsync()
+       public async Task<List<Alimento>> GetAlimentosAsync()
+{
+    HttpResponseMessage response = await httpClient.GetAsync(API_URL);
+    if (response.IsSuccessStatusCode)
+    {
+        string jsonResponse = await response.Content.ReadAsStringAsync();
+        var jsonOptions = new JsonSerializerOptions
         {
-            HttpResponseMessage response = await httpClient.GetAsync(API_URL);
-            if (response.IsSuccessStatusCode)
+            PropertyNameCaseInsensitive = true
+        };
+        var responseObject = JsonSerializer.Deserialize<JsonElement>(jsonResponse, jsonOptions);
+
+        var results = responseObject.GetProperty("results");
+
+        List<Alimento> alimentos = new List<Alimento>();
+
+        foreach (var result in results.EnumerateArray())
+        {
+            Alimento alimento = new Alimento
             {
-                using var responseStream = await response.Content.ReadAsStreamAsync();
-                var jsonOptions = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                };
-                List<Alimento> food = await JsonSerializer.DeserializeAsync<List<Alimento>>(responseStream, jsonOptions);
-                return food;
-            }
-            else
-            {
-                throw new Exception("Error al obtener los datos de la API.");
-            }
+                Id = result.GetProperty("id").GetInt32(),
+                Title = result.GetProperty("title").GetString(),
+                Image = result.GetProperty("image").GetString(),
+                ImageType = result.GetProperty("imageType").GetString()
+            };
+
+            alimentos.Add(alimento);
         }
+
+        return alimentos;
+    }
+    else
+    {
+        throw new Exception("Error al obtener los datos de la API.");
+    }
+}
     }
     
 }
